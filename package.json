@@ -10,7 +10,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://YULIAN-9.github.io/tienda/.git",
+  "homepage": "https://YULIAN-9.github.io/tienda/",
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-slot": "^1.0.2",
