@@ -4,17 +4,34 @@ import { Button } from '@/components/ui/button';
 import { useCart } from '@/hooks/useCart';
 import CartItem from './CartItem';
 import { ShoppingBag, X } from 'lucide-react';
-import { toast } from '@/components/ui/use-toast';
+
+// Función para formatear precios en formato colombiano
+const formatPrice = (price) => {
+  return new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0
+  }).format(price);
+};
 
 const CartSheet = () => {
   const { cart, isCartOpen, toggleCart, clearCart } = useCart();
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleCheckout = () => {
-    toast({
-        title: "🚧 ¡Proceso de pago no implementado!",
-        description: "Esta función aún no está lista, pero puedes solicitar la integración con Stripe en tu próximo mensaje. 🚀",
-    });
+    const whatsappNumber = '3136294045';
+
+    const productList = cart.map(item => 
+      `• ${item.name} x${item.quantity} - ${formatPrice(item.price * item.quantity)}`
+    ).join('\n');
+
+    const message = encodeURIComponent(
+      `Hola, quiero completar la compra de los siguientes productos:\n\n${productList}\n\nSubtotal: ${formatPrice(subtotal)}`
+    );
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
   };
 
   return (
@@ -42,7 +59,7 @@ const CartSheet = () => {
             <div className="w-full space-y-4">
               <div className="flex justify-between items-center text-lg">
                 <span className="font-semibold">Subtotal:</span>
-                <span className="font-bold text-xl">${subtotal.toFixed(2)}</span>
+                <span className="font-bold text-xl">{formatPrice(subtotal)}</span>
               </div>
               <Button
                 onClick={handleCheckout}
