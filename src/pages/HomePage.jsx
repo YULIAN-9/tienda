@@ -4,37 +4,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { NavLink } from 'react-router-dom';
 import ProductCard from '@/components/products/ProductCard';
-
-const featuredProducts = [
-  {
-    id: 1,
-    name: 'Sombreros',
-    price: 25000,
-    category: 'Sombreros',
-    imageUrl: 'https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  },
-  {
-    id: 2,
-    name: 'Buzos',
-    price: 65000,
-    category: 'Buzos',
-    imageUrl: 'https://leclee.com.co/cdn/shop/files/2416003551.jpg?v=1720212548',
-  },
-  {
-    id: 3,
-    name: 'Bikini',
-    price: 45000,
-    category: 'Ropa de Baño',
-    imageUrl: 'https://fitplanetco.com/cdn/shop/articles/BIKINI_ECO_Y_SOSTENIBLE_HECHO_EN_ESPANA_MADE_IN_SPAIN_FITPLANET-146.jpg?v=1716784697&width=1200',
-  },
-  {
-    id: 4,
-    name: 'Pantaloneta',
-    price: 40000,
-    category: 'Ropa de Baño',
-    imageUrl: 'https://marcacedro.com/cdn/shop/products/pantaloneta_de_ba_o_para_hombre_de_la_marca_cedro_color_azul_claro_hecha_con_procesos_sostenibles.jpg?v=1733332282&width=700',
-  },
-];
+import { featuredProducts } from '@/data/products';
 
 
 const HomePage = () => {
@@ -51,7 +21,7 @@ const HomePage = () => {
         <section className="text-center py-20 relative overflow-hidden rounded-lg">
            <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-black z-0"></div>
            <div className="absolute inset-0 opacity-10">
-                <img  alt="Fondo abstracto de tela" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1653604021351-a6a89b9c44b9" />
+                <img  alt="Fondo abstracto de tela" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1653604021351-a6a89b9c44b9" />
            </div>
 
           <motion.div

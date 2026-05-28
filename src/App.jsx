@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import Layout from '@/components/layout/Layout';
 import HomePage from '@/pages/HomePage';
 import ProductsPage from '@/pages/ProductsPage';
+import PaymentResultPage from '@/pages/PaymentResultPage';
 import { Toaster } from '@/components/ui/toaster';
 import { CartProvider } from '@/context/CartContext';
 
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
+          <Route path="/payment-result" element={<PaymentResultPage />} />
         </Routes>
         <Toaster />
       </Layout>

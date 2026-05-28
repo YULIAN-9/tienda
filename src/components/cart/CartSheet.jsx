@@ -1,42 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetFooter } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { useCart } from '@/hooks/useCart';
 import CartItem from './CartItem';
 import { ShoppingBag, X } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
+import { openEpaycoCheckout } from '@/lib/epaycoCheckout';
 
 // Función para formatear precios en formato colombiano
 const formatPrice = (price) => {
-  return new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0
-  }).format(price);
+  return `$${Number(price).toLocaleString('es-CO')}`;
 };
 
 const CartSheet = () => {
   const { cart, isCartOpen, toggleCart, clearCart } = useCart();
+  const [isProcessingPayment, setIsProcessingPayment] = useState(false);
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const handleCheckout = async () => {
+    if (isProcessingPayment || cart.length === 0) return;
 
-  const handleCheckout = () => {
-    const whatsappNumber = '3136294045';
+    setIsProcessingPayment(true);
+    try {
+      const response = await fetch('/api/payments/epayco/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          cart: cart.map((item) => ({
+            id: item.id,
+            quantity: item.quantity,
+          })),
+        }),
+      });
 
-    const productList = cart.map(item => 
-      `• ${item.name} x${item.quantity} - ${formatPrice(item.price * item.quantity)}`
-    ).join('\n');
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.message || 'No fue posible iniciar el checkout.');
+      }
 
-    const message = encodeURIComponent(
-      `Hola, quiero completar la compra de los siguientes productos:\n\n${productList}\n\nSubtotal: ${formatPrice(subtotal)}`
-    );
-
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
-    window.open(whatsappUrl, '_blank');
+      await openEpaycoCheckout({
+        publicKey: data.publicKey,
+        test: data.test,
+        paymentData: data.paymentData,
+        onClose: () => setIsProcessingPayment(false),
+      });
+    } catch (error) {
+      setIsProcessingPayment(false);
+      toast({
+        title: '❌ Error iniciando el pago',
+        description: error.message || 'Intenta nuevamente en unos segundos.',
+      });
+    }
   };
 
   return (
     <Sheet open={isCartOpen} onOpenChange={toggleCart}>
-      <SheetContent className="w-[400px] sm:w-[540px] bg-slate-900 border-l border-white/10 text-white flex flex-col">
+      <SheetContent className="w-full sm:max-w-lg bg-slate-900 border-l border-white/10 text-white flex flex-col">
         <SheetHeader className="p-6 border-b border-white/10">
           <SheetTitle className="text-2xl font-bold flex items-center gap-2">
             <ShoppingBag className="text-pink-400" />
@@ -63,10 +81,11 @@ const CartSheet = () => {
               </div>
               <Button
                 onClick={handleCheckout}
+                disabled={isProcessingPayment}
                 size="lg"
                 className="w-full bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-bold text-lg py-3 rounded-full shadow-lg hover:shadow-pink-500/50 transition-all duration-300"
               >
-                Proceder al Pago
+                {isProcessingPayment ? 'Conectando con ePayco...' : 'Proceder al Pago'}
               </Button>
               <Button
                 onClick={clearCart}
