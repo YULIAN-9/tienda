@@ -96,7 +96,7 @@ const PaymentResultPage = () => {
   return (
     <>
       <Helmet>
-        <title>Resultado de Pago - YULIAN STORE</title>
+        <title>Resultado de Pago - Nexus Friki</title>
       </Helmet>
 
       <section className="max-w-3xl mx-auto bg-slate-900/70 border border-white/10 rounded-2xl p-6 md:p-10">

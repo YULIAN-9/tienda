@@ -3,6 +3,8 @@ export const products = [
     id: 1,
     name: 'Sombreros',
     price: 25000,
+    originalPrice: 35000,
+    onSale: true,
     category: 'Sombreros',
     imageUrl:
       'https://images.unsplash.com/photo-1529958030586-3aae4ca485ff?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -18,6 +20,8 @@ export const products = [
     id: 3,
     name: 'Bikini',
     price: 45000,
+    originalPrice: 60000,
+    onSale: true,
     category: 'Ropa de Baño',
     imageUrl:
       'https://fitplanetco.com/cdn/shop/articles/BIKINI_ECO_Y_SOSTENIBLE_HECHO_EN_ESPANA_MADE_IN_SPAIN_FITPLANET-146.jpg?v=1716784697&width=1200',
@@ -41,6 +45,8 @@ export const products = [
     id: 6,
     name: 'Buzo Black"',
     price: 70000,
+    originalPrice: 90000,
+    onSale: true,
     category: 'Buzos',
     imageUrl: 'https://vansco.vteximg.com.br/arquivos/ids/340280-1200-1200/VN0A7TJPBLK-1.jpg?v=638545982599500000',
   },

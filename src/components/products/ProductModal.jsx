@@ -197,12 +197,16 @@ const ProductModal = ({ product, isOpen, onClose }) => {
                 {/* Precio */}
                 <div>
                   <span className="text-3xl font-bold text-white">${product.price.toLocaleString('es-ES')}</span>
-                  <span className="text-lg text-gray-400 line-through ml-2">
-                    ${(product.price * 1.2).toLocaleString('es-ES')}
-                  </span>
-                  <span className="ml-2 bg-pink-500 text-white text-sm px-2 py-1 rounded">
-                    OFERTA
-                  </span>
+                  {product.onSale && product.originalPrice && (
+                    <>
+                      <span className="text-lg text-gray-400 line-through ml-2">
+                        ${product.originalPrice.toLocaleString('es-ES')}
+                      </span>
+                      <span className="ml-2 bg-pink-500 text-white text-sm px-2 py-1 rounded">
+                        OFERTA
+                      </span>
+                    </>
+                  )}
                 </div>
 
                 {/* Color seleccionado */}

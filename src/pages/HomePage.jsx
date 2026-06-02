@@ -11,10 +11,10 @@ const HomePage = () => {
   return (
     <>
       <Helmet>
-        <title>YULIAN STORE - Estilo que te Define</title>
-        <meta name="description" content="Descubre las últimas tendencias en moda urbana. Gorras, buzos y más en Urban Threads." />
-        <meta property="og:title" content="Urban Threads - Estilo que te Define" />
-        <meta property="og:description" content="Descubre las últimas tendencias en moda urbana. Gorras, buzos y más en Urban Threads." />
+        <title>Nexus Friki - Estilo que te Define</title>
+        <meta name="description" content="Descubre las últimas tendencias en moda urbana. Gorras, buzos y más en Nexus Friki." />
+        <meta property="og:title" content="Nexus Friki - Estilo que te Define" />
+        <meta property="og:description" content="Descubre las últimas tendencias en moda urbana. Gorras, buzos y más en Nexus Friki." />
       </Helmet>
       
       <div className="space-y-20">

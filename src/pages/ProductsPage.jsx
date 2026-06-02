@@ -23,10 +23,10 @@ const ProductsPage = () => {
   return (
     <>
       <Helmet>
-        <title>Nuestra Colección - Yulian STORE</title>
-        <meta name="description" content="Explora toda la colección de ropa urbana de Urban Threads. Encuentra tu estilo único." />
-        <meta property="og:title" content="Nuestra Colección - Urban Threads" />
-        <meta property="og:description" content="Explora toda la colección de ropa urbana de Urban Threads. Encuentra tu estilo único." />
+        <title>Nuestra Colección - Nexus Friki</title>
+        <meta name="description" content="Explora toda la colección de ropa urbana de Nexus Friki. Encuentra tu estilo único." />
+        <meta property="og:title" content="Nuestra Colección - Nexus Friki" />
+        <meta property="og:description" content="Explora toda la colección de ropa urbana de Nexus Friki. Encuentra tu estilo único." />
       </Helmet>
 
       <div className="space-y-12">

@@ -21,7 +21,7 @@ const Footer = () => {
               <div className="w-10 h-10 bg-gradient-to-r from-pink-500 to-red-500 rounded-full flex items-center justify-center">
                 <Shirt className="w-5 h-5 text-white" />
               </div>
-              <span className="text-lg font-bold text-white uppercase">Yulian Store</span>
+              <span className="text-lg font-bold text-white uppercase">Nexus Friki</span>
             </div>
             <p className="text-gray-400 text-sm">
               Viste con estilo, vive con actitud.
@@ -87,7 +87,7 @@ const Footer = () => {
             
             {/* Información de contacto */}
             <div className="mt-4 text-center md:text-left">
-              <p className="text-gray-400 text-sm mb-2">📧 yulianstore@email.com</p>
+              <p className="text-gray-400 text-sm mb-2">📧 hola@nexusfriki.store</p>
               <p className="text-gray-400 text-sm">📍 Bogotá, Colombia</p>
             </div>
           </div>
@@ -95,7 +95,7 @@ const Footer = () => {
 
         <div className="border-t border-white/10 mt-8 pt-8 text-center">
           <p className="text-gray-400 text-sm">
-            © 2025 Yulian Store. Todos los derechos reservados.
+            © 2026 Nexus Friki. Todos los derechos reservados.
           </p>
         </div>
       </div>

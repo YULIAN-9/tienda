@@ -26,7 +26,7 @@ const Header = () => {
               <Shirt className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h2 className="text-xl font-bold text-white uppercase">Yulian Store</h2>
+              <h2 className="text-xl font-bold text-white uppercase">Nexus Friki</h2>
             </div>
           </NavLink>
           

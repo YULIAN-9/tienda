@@ -86,11 +86,13 @@ const ProductCard = ({ product }) => {
           </div>
 
           {/* Badge de oferta */}
+          {product.onSale && (
           <div className="absolute top-2 left-2">
             <span className="bg-pink-500 text-white px-2 py-1 rounded-full text-xs font-bold">
               OFERTA
             </span>
           </div>
+          )}
 
           {/* Indicador de múltiples imágenes */}
           {currentImages.length > 1 && (
@@ -113,7 +115,12 @@ const ProductCard = ({ product }) => {
           )}
 
           <div className="flex justify-between items-center mt-4">
-            <p className="text-xl font-extrabold text-white">${product.price.toLocaleString('es-ES')}</p>
+            <div>
+              <p className="text-xl font-extrabold text-white">${product.price.toLocaleString('es-ES')}</p>
+              {product.onSale && product.originalPrice && (
+                <p className="text-sm text-gray-400 line-through">${product.originalPrice.toLocaleString('es-ES')}</p>
+              )}
+            </div>
             <div className="flex space-x-2">
               <Button
                 size="sm"
